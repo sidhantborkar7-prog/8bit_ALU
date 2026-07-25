@@ -160,7 +160,7 @@ Flag Generator
 | Full Adder | ✅ | ✅ | ✅ | ✅ | VERIFIED |
 | 4-bit Ripple Carry Adder | ✅ | ✅ | ✅ | ✅ | VERIFIED |
 | 8-bit Ripple Carry Adder | ✅ | ✅ | ✅ | ✅ | VERIFIED |
-| Arithmetic Unit | ⬜ | ⬜ | ⬜ | ⬜ | Pending |
+| Arithmetic Unit | ✅ | ✅ | ✅ | ✅ | VERIFIED |
 | Logic Unit | ⬜ | ⬜ | ⬜ | ⬜ | Pending |
 | Shift Unit | ⬜ | ⬜ | ⬜ | ⬜ | Pending |
 | Flag Generator | ⬜ | ⬜ | ⬜ | ⬜ | Pending |

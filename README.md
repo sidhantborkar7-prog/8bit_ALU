@@ -161,7 +161,7 @@ Flag Generator
 | 4-bit Ripple Carry Adder | ✅ | ✅ | ✅ | ✅ | VERIFIED |
 | 8-bit Ripple Carry Adder | ✅ | ✅ | ✅ | ✅ | VERIFIED |
 | Arithmetic Unit | ✅ | ✅ | ✅ | ✅ | VERIFIED |
-| Logic Unit | ⬜ | ⬜ | ⬜ | ⬜ | Pending |
+| Logic Unit | ✅ | ✅ | ✅ | ✅ | VERIFIED |
 | Shift Unit | ⬜ | ⬜ | ⬜ | ⬜ | Pending |
 | Flag Generator | ⬜ | ⬜ | ⬜ | ⬜ | Pending |
 | Top ALU | ⬜ | ⬜ | ⬜ | ⬜ | Pending |

@@ -1,0 +1,52 @@
+$date
+	Sun Jul 26 13:47:57 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module logical_unit_tb $end
+$var wire 8 ! result [7:0] $end
+$var reg 8 " A [7:0] $end
+$var reg 8 # B [7:0] $end
+$var reg 2 $ opcode [1:0] $end
+$scope module dut $end
+$var wire 8 % A [7:0] $end
+$var wire 8 & B [7:0] $end
+$var wire 2 ' opcode [1:0] $end
+$var reg 8 ( result [7:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b100 (
+b0 '
+b11110110 &
+b101 %
+b0 $
+b11110110 #
+b101 "
+b100 !
+$end
+#10000
+b11110111 !
+b11110111 (
+b1 $
+b1 '
+#20000
+b11110011 !
+b11110011 (
+b10 $
+b10 '
+#30000
+b11111011 !
+b11111011 (
+b11 $
+b11 '
+#40000

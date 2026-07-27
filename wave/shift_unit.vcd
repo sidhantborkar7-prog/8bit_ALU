@@ -1,0 +1,40 @@
+$date
+	Mon Jul 27 14:09:26 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module shift_unit_tb $end
+$var wire 1 ! shift_carry $end
+$var wire 8 " result [7:0] $end
+$var reg 8 # A [7:0] $end
+$var reg 1 $ shift_op $end
+$scope module dut $end
+$var wire 8 % A [7:0] $end
+$var wire 1 $ shift_op $end
+$var reg 8 & result [7:0] $end
+$var reg 1 ! shift_carry $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b1110 &
+b111 %
+0$
+b111 #
+b1110 "
+0!
+$end
+#10000
+1!
+b11 "
+b11 &
+1$
+#20000

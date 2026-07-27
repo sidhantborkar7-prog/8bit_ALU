@@ -7,13 +7,15 @@ reg [7:0] B;
 reg cin;
 wire [7:0]sum;
 wire cout;
+wire carry_into_msb;
 
 RCA_8bit dut(
     .A(A),
     .B(B),
     .cin(cin),
     .sum(sum),
-    .cout(cout)
+    .cout(cout),
+    .carry_into_msb(carry_into_msb)
 );
 
 initial begin

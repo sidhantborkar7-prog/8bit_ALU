@@ -5,7 +5,9 @@ module RCA_8bit(
     input [7:0]B,
     input cin,
     output [7:0] sum,
-    output cout
+    output cout,
+    //for overflow 
+    output carry_into_msb
 );
 
 // internal signal 
@@ -27,6 +29,7 @@ RCA_4bit u2_RCA_4bit(
     .B(B[7:4]),
     .cin(c1),
     .sum(sum[7:4]),
-    .cout(cout)
+    .cout(cout),
+    .carry_into_last_bit(carry_into_msb)
 );
 endmodule

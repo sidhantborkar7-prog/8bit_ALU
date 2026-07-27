@@ -6,10 +6,13 @@ module arithmetic_unit(
     input sub,
     output [7:0]result,
     output cout,
+    //for overflow
+    output overflow
 );
 
 // internal wire 
 wire [7:0]mod_b;
+wire carry_into_msb;
 
 // changing the value of B 
 //5-3 = 5 +(-3) and -3 = 2's compliment of 3 
@@ -26,7 +29,10 @@ RCA_8bit u1(
     .B(mod_b),
     .cin(sub),
     .sum(result),
-    .cout(cout)  
+    .cout(cout),
+    .carry_into_msb(carry_into_msb)  
 );
+
+assign overflow = cout ^ carry_into_msb; 
 
 endmodule

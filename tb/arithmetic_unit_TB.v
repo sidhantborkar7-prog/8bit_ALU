@@ -7,13 +7,15 @@ reg [7:0]B;
 reg sub;
 wire [7:0]result;
 wire cout;
+wire overflow;
 
 arithmetic_unit dut(
     .A(A),
     .B(B),
     .sub(sub),
     .result(result),
-    .cout(cout)
+    .cout(cout),
+    .overflow(overflow)
 );
 
 initial begin
@@ -48,6 +50,12 @@ initial begin
     A = 8'b00000101;
     B = 8'b00001010;
     sub = 1'b1;
+    #10;
+
+    //overflow = 1
+    A = 8'b00110010;
+    B = 8'b01100100;
+    sub = 1'b0;
     #10;
 
     $finish;

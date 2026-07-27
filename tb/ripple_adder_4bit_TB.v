@@ -6,14 +6,16 @@ reg [3:0]A;
 reg [3:0]B;
 reg cin;
 wire [3:0]sum;
-wire cout; 
+wire cout;
+wire carry_into_last_bit;  
 
 RCA_4bit dut(
     .A(A),
     .B(B),
     .cin(cin),
     .sum(sum),
-    .cout(cout)
+    .cout(cout),
+    .carry_into_last_bit(carry_into_last_bit)
 );
 
 initial begin

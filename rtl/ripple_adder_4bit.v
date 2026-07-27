@@ -5,7 +5,8 @@ module RCA_4bit(
     input [3:0]B,
     input cin,
     output [3:0]sum,
-    output cout
+    output cout,
+    output carry_into_last_bit
 );
 
 wire c1;
@@ -43,5 +44,7 @@ FA FA4(
     .sum(sum[3]),
     .cout(cout)
 );
+
+assign carry_into_last_bit = c3;
 
 endmodule

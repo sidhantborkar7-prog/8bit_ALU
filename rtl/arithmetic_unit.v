@@ -5,7 +5,7 @@ module arithmetic_unit(
     input [7:0]B,
     input sub,
     output [7:0]result,
-    output cout
+    output cout,
 );
 
 // internal wire 

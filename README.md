@@ -15,7 +15,7 @@ This project is being developed from scratch following the same methodology used
 - Bitwise AND
 - Bitwise OR
 - Bitwise XOR
-- Bitwise NOT
+- Bitwise NAND
 - Logical Left Shift
 - Logical Right Shift
 
@@ -32,7 +32,7 @@ using a **3-bit Opcode**.
 | 010 | AND |
 | 011 | OR |
 | 100 | XOR |
-| 101 | NOT |
+| 101 | NAND |
 | 110 | Left Shift |
 | 111 | Right Shift |
 
@@ -164,7 +164,7 @@ Flag Generator
 | Logic Unit | ✅ | ✅ | ✅ | ✅ | VERIFIED |
 | Shift Unit | ✅ | ✅ | ✅ | ✅ | VERIFIED |
 | Flag Generator | ⬜ | ⬜ | ⬜ | ⬜ | Pending |
-| Top ALU | ⬜ | ⬜ | ⬜ | ⬜ | Pending |
+| Top ALU | ✅ | ✅ | ✅ | ✅ | VERIFIED |
 
 ---
 

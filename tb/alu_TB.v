@@ -7,16 +7,20 @@ reg [7:0]B;
 reg [2:0]opcode;
 
 wire [7:0]result;
-wire carry;
-wire overflow;
+wire carry_flag;
+wire overflow_flag;
+wire negative_flag;
+wire zero_flag;
 
 alu dut(
     .A(A),
     .B(B),
     .opcode(opcode),
     .result(result),
-    .carry(carry),
-    .overflow(overflow)
+    .carry_flag(carry_flag),
+    .overflow_flag(overflow_flag),
+    .negative_flag(negative_flag),
+    .zero_flag(zero_flag)
 );
 
 initial begin

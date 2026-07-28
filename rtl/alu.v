@@ -6,8 +6,10 @@ module alu(
     input [2:0]opcode,
 
     output reg [7:0]result,
-    output reg carry,
-    output reg overflow
+    output reg carry_flag,
+    output reg overflow_flag,
+    output zero_flag,
+    output negative_flag
 );
 
 //arithmatic unit  
@@ -67,66 +69,69 @@ always @(*) begin
         //ADD
         3'b000 : begin
             result = arithmetic_result;
-            carry = arithmetic_cout;
-            overflow = arithmetic_overflow;
+            carry_flag = arithmetic_cout;
+            overflow_flag = arithmetic_overflow;
         end 
         
         //SUB
         3'b001 : begin
             result = arithmetic_result;
-            carry = arithmetic_cout;
-            overflow = arithmetic_overflow;
+            carry_flag = arithmetic_cout;
+            overflow_flag = arithmetic_overflow;
         end
 
         //AND
         3'b010 : begin
             result = logical_result;
-            carry = 1'b0;
-            overflow = 1'b0;
+            carry_flag = 1'b0;
+            overflow_flag = 1'b0;
         end
 
         //OR
         3'b011 : begin
             result = logical_result;
-            carry = 1'b0;
-            overflow = 1'b0;
+            carry_flag = 1'b0;
+            overflow_flag = 1'b0;
         end
 
         //XOR
         3'b100 : begin
             result = logical_result;
-            carry = 1'b0;
-            overflow = 1'b0;
+            carry_flag = 1'b0;
+            overflow_flag = 1'b0;
         end
 
         //NAND
         3'b101 : begin
             result = logical_result;
-            carry = 1'b0;
-            overflow = 1'b0;
+            carry_flag = 1'b0;
+            overflow_flag = 1'b0;
         end
 
         //Left shift 
         3'b110 : begin
             result = shift_result;
-            carry = shift_carry;
-            overflow = 1'b0;
+            carry_flag = shift_carry;
+            overflow_flag = 1'b0;
         end
 
         //Right shift 
         3'b111 : begin
             result = shift_result;
-            carry = shift_carry;
-            overflow = 1'b0;
+            carry_flag = shift_carry;
+            overflow_flag = 1'b0;
         end
 
         //default case 
         default : begin
             result = 8'b00000000;
-            carry = 1'b0;
-            overflow = 1'b0;
+            carry_flag = 1'b0;
+            overflow_flag = 1'b0;
         end
     endcase
-
 end 
+
+assign zero_flag = (result == 8'b00000000);
+assign negative_flag = result[7];
+
 endmodule

@@ -174,7 +174,7 @@ vvp sim/alu.out
 ### Open GTKWave
 
 ```bash
-gtkwave wave/alu.vcd
+gtkwave wave/alu.vcd 
 ```
 
 ---

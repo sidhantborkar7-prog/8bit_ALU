@@ -77,14 +77,6 @@ This project follows a **bottom-up hardware design approach**, beginning with ba
 
 ---
 
-## 📈 Development Process
-
-<p align="center">
-    <img src="Images/Development_Process.png" alt="Development Process" width="700">
-</p>
-
----
-
 ## Project Structure
 
 ```text
@@ -94,7 +86,6 @@ This project follows a **bottom-up hardware design approach**, beginning with ba
 │   ├── Project_banner.png
 │   ├── ALU_Architecture.png
 │   ├── Design_Hierarchy.png
-│   ├── Development_Process.png
 │   ├── ALU_TB_output.png
 │   └── ALU_with_flags_TB_output.png
 │

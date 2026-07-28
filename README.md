@@ -1,73 +1,131 @@
-# 8-bit ALU Design in Verilog
-
-An RTL implementation of an **8-bit Arithmetic Logic Unit (ALU)** written completely in **Verilog HDL**.
-
-This project is being developed from scratch following the same methodology used in semiconductor companies—starting from basic combinational blocks and gradually integrating them into a complete ALU.
-
----
-
-# Features
-
-## Phase 1 (Current)
-
-- 8-bit Addition
-- 8-bit Subtraction
-- Bitwise AND
-- Bitwise OR
-- Bitwise XOR
-- Bitwise NAND
-- Logical Left Shift
-- Logical Right Shift
-
-using a **3-bit Opcode**.
-
----
-
-# Opcode Table
-
-| Opcode | Operation |
-|---------|-----------|
-| 000 | Addition |
-| 001 | Subtraction |
-| 010 | AND |
-| 011 | OR |
-| 100 | XOR |
-| 101 | NAND |
-| 110 | Left Shift |
-| 111 | Right Shift |
-
----
-
-# Project Architecture
-
+```{=html}
+<p align="center">
 ```
-                +----------------+
- A -----------> |                |
-                |                |
- B -----------> |   8-bit ALU    |------> Result[7:0]
-                |                |
- Opcode ------> |                |
-                +----------------+
-                       |
-                       |
-        +--------------+-------------+
-        |              |             |
- Arithmetic Unit   Logic Unit   Shift Unit
-        |
- Ripple Carry Adder
-        |
- Full Adders
-        |
- Half Adders
+`<img src="Images/Project_banner.png" alt="8-bit ALU Banner" width="100%">`{=html}
+```{=html}
+</p>
+```
+```{=html}
+<h1 align="center">
+```
+8-bit ALU Design in Verilog
+```{=html}
+</h1>
+```
+```{=html}
+<p align="center">
+```
+RTL Design • Verilog HDL • Digital Design • FPGA • Icarus Verilog •
+GTKWave
+```{=html}
+</p>
 ```
 
----
+------------------------------------------------------------------------
 
-# Project Structure
+## Project Overview
 
+An RTL implementation of an **8-bit Arithmetic Logic Unit (ALU)**
+designed entirely in **Verilog HDL**.
+
+This project follows a **bottom-up RTL design methodology**, beginning
+with a **Half Adder** and progressively integrating reusable modules
+into a complete **8-bit ALU**. Each module is developed, simulated, and
+verified independently before final integration.
+
+------------------------------------------------------------------------
+
+## Features
+
+### Arithmetic Operations
+
+-   8-bit Addition
+-   8-bit Subtraction
+
+### Logical Operations
+
+-   AND
+-   OR
+-   XOR
+-   NAND
+
+### Shift Operations
+
+-   Logical Left Shift
+-   Logical Right Shift
+
+### Status Flags
+
+-   Carry Flag
+-   Overflow Flag
+-   Zero Flag
+-   Negative Flag
+
+------------------------------------------------------------------------
+
+## Opcode Table
+
+   Opcode  Operation
+  -------- ---------------------
+   `000`   Addition
+   `001`   Subtraction
+   `010`   AND
+   `011`   OR
+   `100`   XOR
+   `101`   NAND
+   `110`   Logical Left Shift
+   `111`   Logical Right Shift
+
+------------------------------------------------------------------------
+
+## ALU Architecture
+
+```{=html}
+<p align="center">
 ```
-8bit_ALU/
+`<img src="Images/ALU_Architecture.png" width="850">`{=html}
+```{=html}
+</p>
+```
 
+------------------------------------------------------------------------
+
+## Design Hierarchy
+
+```{=html}
+<p align="center">
+```
+`<img src="Images/Design_Hierarchy.png" width="650">`{=html}
+```{=html}
+</p>
+```
+
+------------------------------------------------------------------------
+
+## 📈 Development Process
+
+```{=html}
+<p align="center">
+```
+`<img src="Images/Development_Process.png" width="650">`{=html}
+```{=html}
+</p>
+```
+
+------------------------------------------------------------------------
+
+## Project Structure
+
+``` text
+8-bit-ALU/
+│
+├── Images/
+│   ├── Project_banner.png
+│   ├── ALU_Architecture.png
+│   ├── Design_Hierarchy.png
+│   ├── Development_Process.png
+│   ├── ALU_TB_output.png
+│   └── ALU_with_flags_TB_output.png
 │
 ├── rtl/
 │   ├── half_adder.v
@@ -75,10 +133,9 @@ using a **3-bit Opcode**.
 │   ├── ripple_adder_4bit.v
 │   ├── ripple_adder_8bit.v
 │   ├── arithmetic_unit.v
-│   ├── logic_unit.v
+│   ├── logical_unit.v
 │   ├── shift_unit.v
-│   ├── flag_generator.v
-│   └── alu_8bit.v
+│   └── alu.v
 │
 ├── tb/
 │   ├── Half_adder_TB.v
@@ -86,152 +143,203 @@ using a **3-bit Opcode**.
 │   ├── ripple_adder_4bit_TB.v
 │   ├── ripple_adder_8bit_TB.v
 │   ├── arithmetic_unit_TB.v
-│   ├── logic_unit_TB.v
+│   ├── logical_unit_TB.v
 │   ├── shift_unit_TB.v
-│   ├── alu_8bit_TB.v
-│
-├── wave/
-│   ├── half_adder.vcd
-│   ├── Full_adder.vcd
-│   ├── Ripple_adder_4bit.vcd
-│   ├── Ripple_adder_8bit.vcd
+│   └── alu_TB.v
 │
 ├── sim/
-│
+├── wave/
+├── LICENSE
 └── README.md
 ```
 
----
+------------------------------------------------------------------------
 
-# ALU Inputs
+## ALU Interface
 
-```verilog
+### Inputs
+
+``` verilog
 input  [7:0] A;
 input  [7:0] B;
 input  [2:0] opcode;
 ```
 
----
+### Outputs
 
-# ALU Outputs
-
-```verilog
+``` verilog
 output [7:0] result;
-
-output carry;
-output zero;
-output overflow;
-output negative;
+output carry_flag;
+output overflow_flag;
+output zero_flag;
+output negative_flag;
 ```
 
----
+------------------------------------------------------------------------
 
-# Design Methodology
+## Module Verification Status
 
-The ALU is designed hierarchically.
+  ---------------------------------------------------------------------------
+  Module                   RTL   Testbench   Simulation   GTKWave    Status
+  ----------------------- ----- ----------- ------------ --------- ----------
+  Half Adder               ✅       ✅           ✅         ✅      VERIFIED
 
+  Full Adder               ✅       ✅           ✅         ✅      VERIFIED
+
+  4-bit Ripple Carry       ✅       ✅           ✅         ✅      VERIFIED
+  Adder                                                            
+
+  8-bit Ripple Carry       ✅       ✅           ✅         ✅      VERIFIED
+  Adder                                                            
+
+  Arithmetic Unit          ✅       ✅           ✅         ✅      VERIFIED
+
+  Logical Unit             ✅       ✅           ✅         ✅      VERIFIED
+
+  Shift Unit               ✅       ✅           ✅         ✅      VERIFIED
+
+  Top ALU                  ✅       ✅           ✅         ✅      VERIFIED
+  ---------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+## Simulation Results
+
+The ALU has been verified using custom Verilog testbenches.
+
+### Operations Verified
+
+-   Addition
+-   Subtraction
+-   AND
+-   OR
+-   XOR
+-   NAND
+-   Logical Left Shift
+-   Logical Right Shift
+
+### Flags Verified
+
+-   Carry Flag
+-   Overflow Flag
+-   Zero Flag
+-   Negative Flag
+
+Waveforms were analyzed using **GTKWave**.
+
+### ALU Testbench Output
+
+```{=html}
+<p align="center">
 ```
-Half Adder
-      ↓
-Full Adder
-      ↓
-4-bit Ripple Carry Adder
-      ↓
-8-bit Ripple Carry Adder
-      ↓
-Arithmetic Unit
-      ↓
-Logic Unit
-      ↓
-Shift Unit
-      ↓
-Flag Generator
-      ↓
-8-bit ALU
+`<img src="Images/ALU_TB_output.png" width="900">`{=html}
+```{=html}
+</p>
 ```
 
----
+------------------------------------------------------------------------
 
-# Development Progress
+### ALU with Flags
 
-| Module | RTL | TB | Simulation | GTKWave | Status |
-|--------|:---:|:---:|:----------:|:--------:|:------:|
-| Half Adder | ✅ | ✅ | ✅ | ✅ | VERIFIED |
-| Full Adder | ✅ | ✅ | ✅ | ✅ | VERIFIED |
-| 4-bit Ripple Carry Adder | ✅ | ✅ | ✅ | ✅ | VERIFIED |
-| 8-bit Ripple Carry Adder | ✅ | ✅ | ✅ | ✅ | VERIFIED |
-| Arithmetic Unit | ✅ | ✅ | ✅ | ✅ | VERIFIED |
-| Logic Unit | ✅ | ✅ | ✅ | ✅ | VERIFIED |
-| Shift Unit | ✅ | ✅ | ✅ | ✅ | VERIFIED |
-| Flag Generator | ⬜ | ⬜ | ⬜ | ⬜ | Pending |
-| Top ALU | ✅ | ✅ | ✅ | ✅ | VERIFIED |
+```{=html}
+<p align="center">
+```
+`<img src="Images/ALU_with_flags_TB_output.png" width="900">`{=html}
+```{=html}
+</p>
+```
 
----
+------------------------------------------------------------------------
 
-# Tools Used
+## Running the Simulation
 
-- Verilog HDL
-- Icarus Verilog
-- GTKWave
-- Visual Studio Code
-- Git
-- GitHub
+### Compile
 
----
-
-# Simulation
-
-Compile
-
-```bash
+``` bash
 iverilog -o sim/alu.out rtl/*.v tb/*.v
 ```
 
-Run
+### Run
 
-```bash
+``` bash
 vvp sim/alu.out
 ```
 
-Open waveform
+### Open GTKWave
 
-```bash
+``` bash
 gtkwave wave/alu.vcd
 ```
 
----
+------------------------------------------------------------------------
 
-# Future Improvements
+## Tools Used
 
-## Phase 2
+-   Verilog HDL
+-   Icarus Verilog
+-   GTKWave
+-   Visual Studio Code
+-   Git
+-   GitHub
 
-- 4-bit Opcode
-- Multiplication
-- Division
-- Increment
-- Decrement
-- Compare
-- Rotate Left
-- Rotate Right
+------------------------------------------------------------------------
 
----
+## Future Improvements
 
-## Phase 3
+### Phase 2
 
-- Parameterized ALU
-- Barrel Shifter
-- Carry Lookahead Adder
-- Signed Arithmetic
-- Test Coverage
-- Randomized Testbench
-- SystemVerilog Assertions
+-   4-bit Opcode ALU
+-   Multiplication
+-   Division
+-   Increment
+-   Decrement
+-   Compare
+-   Rotate Left
+-   Rotate Right
 
----
+### Phase 3
 
-# Author
+-   Parameterized ALU
+-   Carry Lookahead Adder (CLA)
+-   Barrel Shifter
+-   Signed Arithmetic
+-   Randomized Testbench
+-   Functional Coverage
+-   SystemVerilog Assertions (SVA)
+
+------------------------------------------------------------------------
+
+## Key Learning Outcomes
+
+-   Hierarchical RTL Design
+-   Modular Verilog Design
+-   Arithmetic Circuit Design
+-   Logical Circuit Design
+-   Ripple Carry Adder Design
+-   Flag Generation
+-   Functional Verification
+-   GTKWave Analysis
+-   Git & GitHub Workflow
+
+------------------------------------------------------------------------
+
+## Author
 
 **Sidhant Borkar**
 
 Electronics & Telecommunication Engineer
 
-Verilog • Digital Design • RTL Design • FPGA
+**Areas of Interest**
+
+-   RTL Design
+-   Digital Design
+-   FPGA Design
+-   VLSI Design
+-   Verilog/SystemVerilog
+
+------------------------------------------------------------------------
+
+::: {align="center"}
+If you found this project useful, consider giving it a **Star** on
+GitHub.
+:::

@@ -265,37 +265,6 @@ Waveforms were analyzed using **GTKWave**.
 - SystemVerilog Assertions (SVA)
 
 ---
-
-## Key Learning Outcomes
-
-- Hierarchical RTL Design
-- Modular Verilog Design
-- Ripple Carry Adder Design
-- Arithmetic and Logical Circuit Design
-- Shift Unit Design
-- Status Flag Generation
-- Functional Verification
-- GTKWave Waveform Analysis
-- Git & GitHub Workflow
-
----
-
-## Author
-
-**Sidhant Borkar**
-
-Electronics & Telecommunication Engineer
-
-**Areas of Interest**
-
-- RTL Design
-- Digital Design
-- FPGA Design
-- VLSI Design
-- Verilog/SystemVerilog
-
----
-
 <p align="center">
 If you found this project useful, consider giving it a ⭐ on GitHub.
 </p>

@@ -1,3 +1,4 @@
+//add localparam for opcode new concept learn 
 `timescale 1ns/1ps 
 
 module alu(
